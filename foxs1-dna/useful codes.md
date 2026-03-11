@@ -4,12 +4,15 @@
 tail -f /home/cbtml/mdprojects/foxs1-dna/md_progress_gpu.txt
 
 ##after proper dna-protein dock pdb is ready
+
 gmx pdb2gmx -f temp_clean_ter_added.pdb -o complex.gro -p topol.top -water tip3p -ignh
 
 ##defining the Simulation Box
+
 gmx editconf -f complex.gro -o box.gro -c -d 1.0 -bt dodecahedron
 
 ##Solvation (Adding Water)
+
 gmx solvate -cp box.gro -cs spc216.gro -o solvated.gro -p topol.top
 
 ; ions.mdp - used as input into grompp to generate ions.tpr
