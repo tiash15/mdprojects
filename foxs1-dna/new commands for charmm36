@@ -34,6 +34,15 @@ gmx genrestr -f em.gro -n index.ndx -o posre_DNA_C.itp -fc 1000 1000 1000
 gmx genrestr -f em.gro -n index.ndx -o posre_Protein_chain_P.itp -fc 1000 1000 1000
 
 
+gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -n index.ndx -o nvt.tpr
+
+
+gmx mdrun -v -deffnm nvt
+
+
+gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -r nvt.gro -p topol.top -n index.ndx -o npt.tpr
+
+
 
 
 
