@@ -6,3 +6,48 @@ gmx editconf -f processed_wt.gro -o boxed_wt.gro -c -d 1.2 -bt dodecahedron
 
 
 gmx solvate -cp boxed_wt.gro -cs spc216.gro -o solvated_wt.gro -p topol.top  
+
+
+gmx grompp -f ions.mdp -c solvated_wt.gro -p topol.top -o ions.tpr -maxwarn 1
+
+
+gmx genion -s ions.tpr -o solvated_ions.gro -p topol.top -pname NA -nname CL -neutral -conc 0.15
+
+
+gmx grompp -f em.mdp -c solvated_ions.gro -p topol.top -o em.tpr
+
+
+gmx mdrun -v -deffnm em
+
+
+gmx make_ndx -f em.gro -o index.ndx
+
+create necessary groups
+
+
+gmx genrestr -f em.gro -n index.ndx -o posre_DNA_D.itp -fc 1000 1000 1000
+
+
+gmx genrestr -f em.gro -n index.ndx -o posre_DNA_C.itp -fc 1000 1000 1000
+
+
+gmx genrestr -f em.gro -n index.ndx -o posre_Protein_chain_P.itp -fc 1000 1000 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
