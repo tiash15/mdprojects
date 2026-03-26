@@ -1,0 +1,8 @@
+gmx pdb2gmx -f foxs1-mutant-dna.pdb -o processed_wt.gro -p topol.top -i posre.itp -ff charmm36-jul2022 -water tip3p -ignh -ter
+
+
+gmx editconf -f processed_wt.gro -o boxed_wt.gro -c -d 1.2 -bt dodecahedron
+
+
+
+gmx solvate -cp boxed_wt.gro -cs spc216.gro -o solvated_wt.gro -p topol.top  p
