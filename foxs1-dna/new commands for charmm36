@@ -5,4 +5,4 @@ gmx editconf -f processed_wt.gro -o boxed_wt.gro -c -d 1.2 -bt dodecahedron
 
 
 
-gmx solvate -cp boxed_wt.gro -cs spc216.gro -o solvated_wt.gro -p topol.top  p
+gmx solvate -cp boxed_wt.gro -cs spc216.gro -o solvated_wt.gro -p topol.top  
