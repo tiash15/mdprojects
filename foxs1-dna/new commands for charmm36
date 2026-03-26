@@ -43,6 +43,18 @@ gmx mdrun -v -deffnm nvt
 gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -r nvt.gro -p topol.top -n index.ndx -o npt.tpr
 
 
+gmx mdrun -v -deffnm npt
+
+
+gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_300.tpr
+
+
+create new screen in tmux
+
+gmx mdrun -v -deffnm md_0_300 -pin on -nb gpu -pme gpu -bonded gpu -update gpu
+
+
+
 
 
 
